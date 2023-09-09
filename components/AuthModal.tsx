@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Auth } from "@supabase/auth-ui-react";
 
 import Modal from "./Modal";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
 
 
 const AuthModal = () => {
@@ -19,7 +20,21 @@ const AuthModal = () => {
         onChange={() => {}}
         >
             <Auth
-            supabaseClient={supabaseClient} />
+            theme="dark"
+            providers={["github"]}
+            supabaseClient={supabaseClient}
+            appearance={{
+                theme:ThemeSupa,
+                variables: {
+                    default: {
+                        colors: {
+                            brand: '#404040',
+                            brandAccent: '#22c55e'
+                        }
+                    }
+                }
+            }}
+            />
         </Modal>
     );
 }
